@@ -1,0 +1,14 @@
+
+# Raw Olist dataset files
+Data_sets/Olist_Dataset/*.csv
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# Environment variables and secrets
+.env
