@@ -2,6 +2,9 @@
 # Raw Olist dataset files
 Data_sets/Olist_Dataset/*.csv
 
+# Ignore raw Olist dataset folder
+Data_sets/Cleaned_Dataset/Olist_Dataset/
+
 # Python cache files
 __pycache__/
 *.py[cod]
@@ -10,7 +13,12 @@ __pycache__/
 .venv/
 venv/
 
-# Environment variables and secrets
+# Environment variables and credentials
 .env
+.env.*
 
+# SQL practice queries
+SQL_queries/
+
+# Temporary Python file
 ex.py
