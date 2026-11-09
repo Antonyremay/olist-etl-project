@@ -1,0 +1,23 @@
+# Environment variables and credentials
+.env
+.env.*
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+venv/
+.venv/
+
+# Git files
+.git/
+.gitignore
+
+# Power BI dashboard
+*.pbix
+
+# Temporary files
+*.tmp
+*.log

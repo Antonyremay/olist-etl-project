@@ -1,0 +1,15 @@
+
+services:
+  olist-etl:
+    build: .
+    image: olist-etl:v1
+
+    env_file:
+      - .env
+
+    environment:
+      DB_HOST: host.docker.internal
+      DB_NAME: olist_ecommerce_docker_test
+
+    volumes:
+      - ./Data_sets/Cleaned_Dataset:/app/Data_sets/Cleaned_Dataset:ro
