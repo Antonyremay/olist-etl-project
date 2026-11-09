@@ -128,17 +128,23 @@ The Compose configuration:
 - Mounts the cleaned CSV datasets into the container as a read-only volume.
 - Executes the Python ETL loading script.
 
-**Important database safety note:** The current Compose configuration targets the separate `olist_ecommerce_docker_test` database. The loader uses `if_exists="replace"`, which replaces existing tables in that database. Do not change the target to your original database without understanding this behavior.
+### Docker Hub
 
-### Docker Image
+The Docker image is publicly available on Docker Hub.
 
-The application image is named:
+**Repository:** [remayy/olist-etl](https://hub.docker.com/r/remayy/olist-etl)
 
-```text
-olist-etl:v1
+**Pull the image:**
+
+```bash
+docker pull remayy/olist-etl:v1
 ```
 
+**Image:** `remayy/olist-etl:v1`
+
 The image contains the Python application scripts and required dependencies. The cleaned datasets and `.env` credentials are supplied separately at runtime.
+
+**Important database safety note:** The current Compose configuration targets the separate `olist_ecommerce_docker_test` database. The loader uses `if_exists="replace"`, which replaces existing tables in that database. Do not change the target to your original database without understanding this behavior.
 
 ## SQL Analysis
 
