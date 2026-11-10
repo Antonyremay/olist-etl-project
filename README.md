@@ -2,7 +2,7 @@
 
 An end-to-end data engineering project built using the Brazilian Olist e-commerce dataset. This project demonstrates data extraction, transformation, cleaning, validation, and loading using Python, Pandas, and MySQL, with SQL-based analysis and Power BI visualization.
 
-The pipeline is also containerized using Docker and Docker Compose to make the ETL workflow easier to reproduce and execute.
+The pipeline is containerized using Docker and Docker Compose to make the ETL workflow easier to reproduce and execute. The project also includes introductory Apache Spark (PySpark) implementations for data processing and analysis.
 
 ## Project Overview
 
@@ -15,18 +15,20 @@ The project processes Brazilian e-commerce data from Olist and transforms raw da
 - Perform business analysis using SQL.
 - Develop interactive dashboards using Power BI.
 - Containerize the ETL pipeline using Docker.
+- Explore data processing and analysis using Apache Spark (PySpark).
 
 ## Technologies Used
 
 | Category | Technologies |
 |---|---|
 | Programming | Python |
-| Data Processing | Pandas, NumPy |
+| Data Processing | Pandas, NumPy, Apache Spark, PySpark |
 | Database | MySQL |
 | Query Language | SQL |
 | Visualization | Power BI |
 | Containerization | Docker, Docker Compose |
 | Development | VS Code, Git, GitHub |
+| Big Data Platform | Databricks (planned exploration) |
 
 ## Project Structure
 
@@ -47,6 +49,12 @@ olist-etl-project/
 │   ├── prod_category_translate_data.py
 │   ├── reviews_data.py
 │   └── sellers_data.py
+│
+├── pyspark_scripts/
+│   ├── 01_read_order_items.py
+│   ├── 02_order_items_quality.py
+│   ├── 03_seller_sales_analysis.py
+│   └── 04_orders_items_join.py
 │
 ├── SQL_queries/
 ├── .dockerignore
@@ -104,9 +112,9 @@ Create a local `.env` file in the project root with your MySQL credentials:
 ```env
 DB_USER=your_mysql_username
 DB_PASSWORD=your_mysql_password
-DB_HOST=localhost
+DB_HOST=host.docker.internal
 DB_PORT=3306
-DB_NAME=olist_ecommerce
+DB_NAME=olist_ecommerce_docker_test
 ```
 
 **Security:** Never commit your `.env` file or database credentials to GitHub.
@@ -144,11 +152,71 @@ docker pull remayy/olist-etl:v1
 
 The image contains the Python application scripts and required dependencies. The cleaned datasets and `.env` credentials are supplied separately at runtime.
 
-**Important database safety note:** The current Compose configuration targets the separate `olist_ecommerce_docker_test` database. The loader uses `if_exists="replace"`, which replaces existing tables in that database. Do not change the target to your original database without understanding this behavior.
+**Important database safety note:** The current Docker Compose configuration targets the separate `olist_ecommerce_docker_test` database. The loader uses `if_exists="replace"`, which replaces existing tables in that database. Do not change the target to your original database without understanding this behavior.
+
+## Apache Spark (PySpark)
+
+The project also includes introductory Apache Spark processing using PySpark, the Python API for Apache Spark.
+
+The PySpark scripts demonstrate basic data processing operations using Spark DataFrames.
+
+### Technologies
+
+- Apache Spark 4.3.0
+- PySpark 4.3.0
+- Python 3.13.14
+- Java 21
+- Local execution using `local[*]`
+
+### Setup
+
+1. Install Python and Java 21.
+2. Clone this repository.
+3. Open the project folder in your terminal.
+4. Create a separate virtual environment:
+
+```powershell
+python -m venv .venv-spark
+```
+
+5. Activate the environment:
+
+```powershell
+.\.venv-spark\Scripts\Activate.ps1
+```
+
+6. Install PySpark:
+
+```powershell
+python -m pip install pyspark==4.3.0
+```
+
+### Running the PySpark Scripts
+
+Execute these commands from the project root:
+
+```powershell
+python pyspark_scripts/01_read_order_items.py
+python pyspark_scripts/02_order_items_quality.py
+python pyspark_scripts/03_seller_sales_analysis.py
+python pyspark_scripts/04_orders_items_join.py
+```
+
+### Implementations
+
+1. **CSV Reading and Schema Inspection:** Read the cleaned order-items dataset and inspect its schema and records.
+2. **Data Quality Checks:** Check for null values and exact duplicate records.
+3. **Seller Sales Analysis:** Group order items by seller and calculate total items sold, total sales, average price, and freight value.
+4. **Dataset Joining:** Join orders and order-items datasets using the common `order_id` column.
+
+**Execution environment:** The scripts use Spark's local execution mode (`local[*]`) to process data on the local machine. This demonstrates introductory PySpark usage and does not represent a production multi-node Spark cluster.
+
+**Note:** The PySpark environment is maintained separately from the original ETL environment. The `.venv-spark/` virtual environment is excluded from GitHub.
 
 ## SQL Analysis
 
 SQL queries are used to explore business insights across:
+
 - Sales and revenue.
 - Product performance.
 - Customer behavior.
@@ -161,10 +229,10 @@ An interactive Power BI dashboard is developed to explore Olist's e-commerce per
 
 ## Future Enhancements
 
-- Implement distributed data processing using Apache Spark and PySpark.
-- Explore Databricks Free Edition for cloud-based data engineering workflows.
+- Explore Databricks Free Edition for cloud-based PySpark notebook workflows.
 - Improve pipeline orchestration and automation.
 - Add data quality monitoring and logging.
+- Explore advanced Apache Spark and distributed data processing in future projects.
 
 ## Author
 
