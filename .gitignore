@@ -5,6 +5,9 @@ Data_sets/Olist_Dataset/*.csv
 # Ignore raw Olist dataset folder
 Data_sets/Cleaned_Dataset/Olist_Dataset/
 
+# Additional cleaned datasets
+Data_sets/cleaned_*.csv
+
 # Python cache files
 __pycache__/
 *.py[cod]
