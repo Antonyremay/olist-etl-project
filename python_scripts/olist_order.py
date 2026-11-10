@@ -104,7 +104,7 @@ def save_cleaned_orders(df):
     print("Duplicate order IDs:", df["order_id"].duplicated().sum())
 
 def Order_main():
-    file_path=r"Data_sets\Olist_Dataset\olist_orders_dataset.csv"
+    file_path=r"Data_sets\Cleaned_Dataset\Olist_Dataset\olist_orders_dataset.csv"
     order_data_df=load_data(file_path)
     data_inspection(order_data_df)
     duplicate_check(order_data_df)

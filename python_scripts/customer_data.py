@@ -45,7 +45,7 @@ def save_cleaned_customers(df):
     print(f"Rows saved: {len(df)}")
 
 def customer_main():
-    customer_file_path=r"Data_sets\Olist_Dataset\olist_customers_dataset.csv"
+    customer_file_path=r"Data_sets\Cleaned_Dataset\Olist_Dataset\olist_customers_dataset.csv"
     customer_data=load_customer_data(customer_file_path)
     customer_data_inspection(customer_data)
     cleaned_customer_data=clean_customer_data(customer_data)

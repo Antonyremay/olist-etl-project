@@ -87,7 +87,7 @@ def save_cleaned_reviews_data(df):
     print("Cleaned Reviews Dataset Saved Successfully")
 
 def reviews_main():
-    review_file_path=r"Data_sets/Olist_Dataset/olist_order_reviews_dataset.csv"
+    review_file_path=r"Data_sets/Cleaned_Dataset\Olist_Dataset/olist_order_reviews_dataset.csv"
     review_data=load_reviews_data(review_file_path)
     inspect_review_data(review_data)
     duplicate_inspection(review_data)

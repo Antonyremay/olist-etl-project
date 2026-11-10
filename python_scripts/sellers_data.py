@@ -98,7 +98,7 @@ def save_cleaned_sellers_data(df):
 
 def sellers_main():
 
-    seller_file_path = r"Data_sets\Olist_Dataset\olist_sellers_dataset.csv"
+    seller_file_path = r"Data_sets\Cleaned_Dataset\Olist_Dataset\olist_sellers_dataset.csv"
     seller_data = load_sellers_data(seller_file_path)
     inspect_sellers_data(seller_data)
     inspect_seller_duplicates(seller_data)

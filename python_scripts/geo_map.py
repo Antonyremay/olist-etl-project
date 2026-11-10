@@ -135,7 +135,7 @@ def save_cleaned_items(df):
     print("Columns saved:", len(df.columns))
 
 def main():
-    file_path = r"Data_sets/Olist_Dataset/olist_geolocation_dataset.csv"
+    file_path = r"Data_sets/Cleaned_Dataset\Olist_Dataset/olist_geolocation_dataset.csv"
     geolocation_df=load_path(file_path)
     inspect_data(geolocation_df)
     inspect_duplicates(geolocation_df)

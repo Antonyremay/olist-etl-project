@@ -47,7 +47,7 @@ def save_cleaned_items(df):
 
 
 def items_main():
-    items_file_path=r"Data_sets\Olist_Dataset\olist_order_items_dataset.csv"
+    items_file_path=r"Data_sets\Cleaned_Dataset\Olist_Dataset\olist_order_items_dataset.csv"
     items_data=load_items_data(items_file_path)
     items_data_inspection(items_data)
     cleaned_items_data=clean_items_data(items_data)

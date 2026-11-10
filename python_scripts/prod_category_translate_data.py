@@ -71,7 +71,7 @@ def save_cleaned_category_data(df):
 
 def category_main():
 
-    category_file_path = r"Data_sets\Olist_Dataset\product_category_name_translation.csv"
+    category_file_path = r"Data_sets\Cleaned_Dataset\Olist_Dataset\product_category_name_translation.csv"
     category_data = load_category_data(category_file_path)
     inspect_category_data(category_data)
     inspect_category_duplicates(category_data)

@@ -94,7 +94,7 @@ def save_cleaned_products_data(df):
         print("Cleaned Products Dataset Saved Successfully")
     
 def products_main():
-    products_file_path=r"Data_sets\Olist_Dataset\olist_products_dataset.csv"
+    products_file_path=r"Data_sets\Cleaned_Dataset\Olist_Dataset\olist_products_dataset.csv"
     products_data=load_products_data(products_file_path)
     inspect_product_data(products_data)
     inspect_products_duplicates(products_data)

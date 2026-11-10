@@ -46,6 +46,7 @@ def clean_payment_data(df):
     print("Records with zero or negative installments:")
     print(zero_installments)
     cleaned_df['payment_type'] = (cleaned_df['payment_type'].str.strip().str.lower())
+    print(df['payment_value'].sum())
 
     return cleaned_df
 
@@ -59,7 +60,7 @@ def save_cleaned_payments(df):
     print(f"Rows saved: {len(df)}")
 
 def payment_main():
-    file_path=r"Data_sets/Olist_Dataset/olist_order_payments_dataset.csv"
+    file_path=r"Data_sets/Cleaned_Dataset\Olist_Dataset/olist_order_payments_dataset.csv"
     payment_data=load_payment_data_path(file_path)
     inspect_payment_data(payment_data)
     payment_duplicate_check(payment_data)
