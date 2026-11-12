@@ -1,25 +1,27 @@
 # Olist E-Commerce ETL Pipeline & Sales Insights
 
-An end-to-end data engineering and analytics project built using the Brazilian Olist e-commerce dataset. This project demonstrates data extraction, transformation, data cleaning, validation, database integration, distributed data processing concepts, and business intelligence reporting using Python, Pandas, MySQL, Docker, Apache Spark, PySpark, Databricks, SQL, and Power BI.
+An end-to-end data engineering and analytics project built using the Brazilian Olist E-Commerce Public Dataset. The project demonstrates data extraction, transformation, cleaning, validation, database integration, containerization, distributed data processing exploration, SQL analysis, and business intelligence reporting.
 
-The project transforms raw e-commerce data into structured datasets, performs analytical processing, and generates meaningful business insights.
+The primary ETL pipeline is developed using **Python, Pandas, and MySQL**, with **Docker and Docker Compose** for containerization. Additional big-data processing experiments are implemented using **Apache Spark, PySpark, and Databricks Free Edition**. Power BI is used to present business insights through an interactive dashboard.
 
 ---
 
 ## Project Overview
 
-The objective of this project is to build an end-to-end data pipeline using real-world e-commerce data and explore how data engineering tools can support business analysis.
+The objective of this project is to transform raw e-commerce datasets into structured, validated data that can be used for database management, analytical processing, and business intelligence.
 
-The project covers:
+### Project Highlights
 
-- Extracting and processing multiple raw CSV datasets.
-- Cleaning and validating data using Python and Pandas.
-- Loading structured datasets into a MySQL database.
-- Containerizing the ETL environment using Docker.
-- Processing and analyzing data using Apache Spark and PySpark.
-- Performing additional Spark-based analysis using Databricks Free Edition.
-- Executing SQL queries to answer business questions.
-- Building an interactive Power BI dashboard to visualize sales insights.
+- Processed nine Brazilian e-commerce datasets using Python and Pandas.
+- Performed data cleaning, transformation, standardization, and validation.
+- Loaded cleaned datasets into MySQL using SQLAlchemy and PyMySQL.
+- Containerized the ETL environment using Docker and Docker Compose.
+- Explored distributed data processing using Apache Spark and PySpark.
+- Performed additional Spark-based analysis using Databricks Free Edition.
+- Executed SQL queries to investigate business questions and sales performance.
+- Developed an interactive Power BI dashboard for sales insights.
+
+---
 
 ## Technologies & Tools
 
@@ -41,25 +43,48 @@ The project covers:
 
 ## Project Architecture
 
-The project follows an end-to-end data processing workflow:
+The project consists of a primary Python-based ETL workflow, followed by database analysis and business intelligence reporting. Local PySpark and Databricks workflows provide additional distributed-processing experience.
+
+### End-to-End Workflow
+
+```mermaid
+flowchart TD
+    A["9 Raw Olist CSV Datasets"] --> B["Python + Pandas ETL"]
+    B --> C["Data Cleaning & Transformation"]
+    C --> D["Data Validation & Quality Checks"]
+    D --> E["Cleaned CSV Datasets"]
+    E --> F["MySQL Database"]
+    F --> G["SQL Business Analysis"]
+    G --> H["Power BI Dashboard"]
+
+    I["Dockerfile + Docker Compose"] -. "Containerized execution" .-> B
+
+    E -. "Additional processing exploration" .-> J["Apache Spark / PySpark"]
+    J --> K["Local Spark Analysis"]
+
+    E -. "Selected datasets uploaded" .-> L["Databricks Free Edition"]
+    L --> M["Spark Transformations & Managed Tables"]
+```
+
+### Architecture Components
 
 1. **Data Extraction:** Load the original Olist CSV datasets.
 2. **Data Transformation:** Clean, standardize, and transform datasets using Python and Pandas.
 3. **Data Validation:** Check missing values, duplicates, data types, and data consistency.
 4. **Database Loading:** Load the processed datasets into MySQL.
-5. **Containerization:** Package the ETL environment and its dependencies using Docker.
-6. **Big Data Processing:** Read, filter, aggregate, and join datasets using Apache Spark and PySpark.
-7. **Databricks Analysis:** Upload datasets, perform Spark transformations, and save managed tables.
-8. **SQL Analysis:** Perform business-oriented queries and extract useful insights.
-9. **Visualization:** Build an interactive Power BI dashboard.
+5. **Containerization:** Package the ETL application and dependencies using Docker.
+6. **Big Data Exploration:** Read, filter, aggregate, and join datasets using local Apache Spark and PySpark.
+7. **Databricks Analysis:** Perform additional Spark transformations and create managed tables in Databricks.
+8. **SQL Analysis:** Execute business-oriented queries and extract insights.
+9. **Visualization:** Present analytical results through an interactive Power BI dashboard.
 
 ---
 
 ## Dataset Information
 
-The project uses the Brazilian Olist E-Commerce Public Dataset, which contains information about customers, orders, products, sellers, payments, reviews, and geolocation.
+The project uses the Brazilian Olist E-Commerce Public Dataset, containing information about customers, orders, products, sellers, payments, reviews, and geolocation.
 
-The nine datasets used are:
+### Nine Datasets Used
 
 1. Customers
 2. Geolocation
@@ -86,7 +111,7 @@ The nine datasets used are:
 | Category Translation | 71 |
 | **Total** | **1,296,091** |
 
-*The raw and cleaned CSV datasets are maintained locally and are excluded from the Git repository to avoid uploading large data files.*
+*The original and cleaned CSV datasets are maintained locally and excluded from Git tracking to avoid uploading large data files.*
 
 ---
 
@@ -108,7 +133,7 @@ Developed individual Python scripts to process the nine Olist datasets.
 
 **Extract → Transform → Validate → Load**
 
-The cleaned datasets were prepared for database integration and subsequent analysis.
+The cleaned datasets were prepared for MySQL database integration and subsequent analysis.
 
 ---
 
@@ -149,22 +174,22 @@ Containerized the ETL environment to make the application and its dependencies e
 ### Work Completed
 
 - Created a Dockerfile using a Python base image.
-- Configured the project dependencies.
+- Configured the project dependencies through `requirements.txt`.
 - Built the Docker image.
 - Created a Docker Compose configuration for the application and MySQL test database.
-- Executed the ETL workflow in the containerized environment.
+- Executed the ETL application in the containerized environment.
 - Verified database table creation and record counts.
 - Built and pushed the Docker image to Docker Hub.
 
 **Docker Hub:** https://hub.docker.com/r/remayy/olist-etl
 
-**Note:** The Docker workflow uses a separate test database named `olist_ecommerce_docker_test`. The database loader uses table replacement behavior, so the destination database should be checked before running it.
+**Important:** The Docker workflow uses a separate test database named `olist_ecommerce_docker_test`. The database loader uses table replacement behavior, so verify the destination database before running it.
 
 ---
 
 ## 4. Apache Spark & PySpark – Big Data Processing
 
-Implemented PySpark scripts to explore distributed data processing using Apache Spark.
+Implemented separate PySpark scripts to explore distributed data processing using Apache Spark.
 
 ### Environment
 
@@ -182,7 +207,7 @@ Implemented PySpark scripts to explore distributed data processing using Apache 
 - Inspected the schema and data types.
 - Verified the dataset record count.
 
-Result: 112,650 records.
+Result: **112,650 records.**
 
 **02 – Order Items Data Quality**
 
@@ -190,7 +215,7 @@ Result: 112,650 records.
 - Identified duplicate records.
 - Performed basic data quality validation.
 
-Result: 112,650 records, zero null values, and zero exact duplicate records.
+Result: **112,650 records, zero null values, and zero exact duplicate records.**
 
 **03 – Seller Sales Analysis**
 
@@ -221,6 +246,8 @@ Example result:
 | Joined Dataset | 112,650 |
 
 **Execution Environment:** Local Spark using `local[*]` mode.
+
+These scripts represent additional Spark-based processing exercises, separate from the primary Python/Pandas ETL pipeline.
 
 ---
 
@@ -253,7 +280,7 @@ Used Databricks Free Edition to perform additional Spark-based data processing a
 - Order Items DataFrame: 112,650 records.
 - Joined DataFrame: 112,650 records.
 
-The Databricks notebook is available in:
+The Databricks notebook is available at:
 
 `databricks_notebooks/Olist_PySpark_Analysis.py`
 
@@ -276,7 +303,7 @@ The analysis focuses on:
 
 ## 7. Power BI Dashboard – Olist Sales Insights
 
-An interactive Power BI dashboard developed using the Olist e-commerce data to present business insights through visual reports.
+Developed an interactive Power BI dashboard using Olist e-commerce data to present business insights through visual reports.
 
 **Click the dashboard preview below to open the interactive report in Power BI Service.**
 
@@ -334,7 +361,7 @@ olist-etl-project/
 └── README.md
 ```
 
-*The folder structure represents the project organization. Raw datasets, cleaned datasets, virtual environments, and sensitive configuration files are excluded from Git tracking.*
+*The structure represents the local project organization. Raw datasets, cleaned datasets, virtual environments, and sensitive configuration files are excluded from Git tracking.*
 
 ---
 
@@ -351,6 +378,8 @@ Install the following tools to work with the project:
 - Java 21 (for the local PySpark environment)
 - Power BI Desktop (to open the dashboard)
 
+*Java is required for the local Spark environment, not for the Docker-based Python ETL application.*
+
 ### Clone the Repository
 
 ```bash
@@ -362,6 +391,8 @@ cd olist-etl-project
 ```
 
 ### Python Environment Setup
+
+Create a virtual environment:
 
 ```bash
 python -m venv .venv
@@ -380,6 +411,8 @@ pip install -r requirements.txt
 ```
 
 *The original and cleaned Olist datasets must be obtained separately and placed in their expected project directories. Configure the local database connection before running the MySQL loading workflow.*
+
+For Docker-specific execution instructions, refer to the Docker section and the project repository configuration.
 
 ---
 
